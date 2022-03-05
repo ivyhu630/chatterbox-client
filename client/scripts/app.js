@@ -7,6 +7,7 @@ var App = {
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
+  datasets: undefined,
 
   initialize: function() {
     App.username = window.location.search.substr(10);
@@ -26,10 +27,13 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
+      App.dataset = data;
       console.log(data);
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
+      // Message._data = data;
+
     });
   },
 
