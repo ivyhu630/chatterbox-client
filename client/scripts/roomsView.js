@@ -29,7 +29,7 @@ var RoomsView = {
     console.log('Select Clicked!');
     var roomname = $( '#myRooms option:selected' ).text();
     console.log('name is ', roomname);
-    Messages.giveSelectedRoomname(roomname);
+    Messages.pullRoomSpecificData(roomname);
     console.log(Messages._data);
     MessagesView.render();
     // });

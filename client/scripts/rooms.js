@@ -11,13 +11,17 @@ var Rooms = {
   // mark a room as selected, etc.
   findRoomnames: function(data) {
     var uniqueRoomnames = new Set();
-    // iterate over data array
-    // at each loop, push data.roomname into repeatedRooms
     data.forEach((message) => {
       var currentRoom = message.roomname;
       uniqueRoomnames.add(currentRoom);
     });
     Rooms._data = uniqueRoomnames;
-    console.log(Rooms._data);
+    // console.log(Rooms._data);
   },
+
+  // addRoom: function(newRoom) {
+  //   Rooms._data.add(newRoom);
+  // }
+
+
 };

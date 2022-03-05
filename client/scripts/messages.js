@@ -17,13 +17,12 @@ var Messages = {
     // console.log('This is pullData', Messages._data);
   },
 
-  // a method that takes in roomname
-  giveSelectedRoomname: function (roomName) {
-    // iterate over _data and return all messages that contain that roomname
-    // push correct values into array
+  pullRoomSpecificData: function (roomname) {
+
+
     var updatedData = [];
     for (const message of Messages._data) {
-      if (message.roomName === roomName) {
+      if (message.roomname === roomname) {
         updatedData.push(message);
       }
     }
