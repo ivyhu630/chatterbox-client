@@ -9,32 +9,21 @@ var MessagesView = {
     // TODO: Perform any work which needs to be done
     // when this view loads.
     MessagesView.render();
+    MessagesView.handleRefresh();
   },
 
   render: function() {
     // TODO: Render _all_ the messages.
-    // create var for current user
-    // user messageView.render
-
-    // iterate over dataset
-    // renderMessage ({})
-    console.log(Messages._data);
     Messages.pullData(Messages._data);
 
     if (Messages._data !== null) {
-      Messages._data.forEach((message) => {
+      var top20 = Messages._data.slice(-20);
+      top20.forEach((message) => {
         var $currentMessage = MessagesView.renderMessage(message);
-        console.log('CurrentMessage', message);
+        // console.log('CurrentMessage', message);
         $('#chats').prepend($currentMessage);
-      } );
+      });
     }
-
-
-
-    // for (var i in App.dataset) {
-    //   let currentUser = (index) => app.dataset[i].username;
-    // },
-    // prepend to chat
   },
 
   renderMessage: function(message) {
@@ -44,7 +33,7 @@ var MessagesView = {
     var username = message.username;
     var text = message.text;
     var roomname = message.roomname;
-    console.log(username);
+    // console.log(username);
     return MessageView.render({username: username, text: text, roomname: roomname});
 
   },
@@ -52,6 +41,12 @@ var MessagesView = {
   handleClick: function(event) {
     // TODO: handle a user clicking on a message
     // (this should add the sender to the user's friend list).
-  }
+  },
 
+  handleRefresh: function() {
+    var $refreshButton = $('.refreshButton');
+    $refreshButton.on('click', function(event) {
+      MessagesView.render();
+    });
+  },
 };

@@ -13,7 +13,7 @@ var App = {
 
     FormView.initialize();
     RoomsView.initialize();
-    MessagesView.initialize();
+    // MessagesView.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -23,7 +23,9 @@ var App = {
     // continually, instead of just once at the start.
 
     setInterval(function() {
-      App.fetch();
+      App.fetch(App.stopSpinner);
+    }, 10000);
+    setTimeout(function() {
       MessagesView.initialize();
     }, 10000);
 
