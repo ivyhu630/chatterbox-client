@@ -8,6 +8,7 @@ var MessagesView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+    MessagesView.render();
   },
 
   render: function() {
@@ -17,12 +18,18 @@ var MessagesView = {
 
     // iterate over dataset
     // renderMessage ({})
+    console.log(Messages._data);
+    Messages.pullData(Messages._data);
 
-    // _.foreach object rendermessage
-    Message._data.forEach((message) => {
-      var $currentMessage = MessagesView.renderMessage(message);
-      $('#chats').html().prepend($currentMessage);
-    } );
+    if (Messages._data !== null) {
+      Messages._data.forEach((message) => {
+        var $currentMessage = MessagesView.renderMessage(message);
+        console.log('CurrentMessage', message);
+        $('#chats').prepend($currentMessage);
+      } );
+    }
+
+
 
     // for (var i in App.dataset) {
     //   let currentUser = (index) => app.dataset[i].username;
@@ -37,7 +44,8 @@ var MessagesView = {
     var username = message.username;
     var text = message.text;
     var roomname = message.roomname;
-    return messageView.render;
+    console.log(username);
+    return MessageView.render({username: username, text: text, roomname: roomname});
 
   },
 

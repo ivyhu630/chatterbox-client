@@ -22,5 +22,6 @@ var Parse = {
       }
     });
   }
+  // Parse.readAll()
 
 };
