@@ -9,22 +9,37 @@ var RoomsView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+    RoomsView.render();
   },
 
   render: function() {
-    // TODO: Render out the list of rooms.
+    for (const roomname of Rooms._data) {
+      var $room = RoomsView.renderRoom(roomname);
+    }
   },
 
   renderRoom: function(roomname) {
-    // TODO: Render out a single room.
+    RoomsView.$select.prepend('<option>' + roomname + '</option>');
   },
 
   handleChange: function(event) {
     // TODO: Handle a user selecting a different room.
+    //Message.giveSelectedRoomname(roomname);
+    // $('option').on('click', function(event) {
+    console.log('Select Clicked!');
+    var roomname = $( '#myRooms option:selected' ).text();
+    console.log('name is ', roomname);
+    Messages.giveSelectedRoomname(roomname);
+    console.log(Messages._data);
+    MessagesView.render();
+    // });
   },
 
   handleClick: function(event) {
     // TODO: Handle the user clicking the "Add Room" button.
-  }
+  },
+
+
 
 };
+

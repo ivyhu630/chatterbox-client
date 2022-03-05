@@ -5,7 +5,7 @@
 var Messages = {
 
   // TODO: Define how you want to store your messages.
-  _data: null,
+  _data: [],
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
@@ -16,9 +16,17 @@ var Messages = {
     Messages._data = data;
     // console.log('This is pullData', Messages._data);
   },
-  // give data method
-  // giveData: function () {
-  //   return Messages
-  // }
 
+  // a method that takes in roomname
+  giveSelectedRoomname: function (roomName) {
+    // iterate over _data and return all messages that contain that roomname
+    // push correct values into array
+    var updatedData = [];
+    for (const message of Messages._data) {
+      if (message.roomName === roomName) {
+        updatedData.push(message);
+      }
+    }
+    Messages._data = updatedData;
+  },
 };

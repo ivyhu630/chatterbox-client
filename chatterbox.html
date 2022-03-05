@@ -27,12 +27,15 @@
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select></select>
+        <select id="myRooms" onchange="RoomsView.handleChange()">
+          <option value="none" selected disabled hidden>Select a Room</option>
+        </select>
         <button>Add Room</button>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
-        <input type="submit" name="submit" class="submit"/>
+        <!-- <input type="submit" name="submit" class="submit"/> -->
+        <button class="submitButton">Submit</button>
       </form>
     </div>
     <div class="refresh"></div>

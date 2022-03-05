@@ -17,7 +17,7 @@ var MessagesView = {
     Messages.pullData(Messages._data);
 
     if (Messages._data !== null) {
-      var top20 = Messages._data.slice(-20);
+      var top20 = Messages._data.slice(0, 20);
       top20.forEach((message) => {
         var $currentMessage = MessagesView.renderMessage(message);
         // console.log('CurrentMessage', message);
