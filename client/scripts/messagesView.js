@@ -9,43 +9,40 @@ var MessagesView = {
     // TODO: Perform any work which needs to be done
     // when this view loads.
     MessagesView.render();
+    MessagesView.handleClick();
     MessagesView.handleRefresh();
   },
 
   render: function() {
-    // TODO: Render _all_ the messages.
     Messages.pullData(Messages._data);
-
     if (Messages._data !== null) {
       var top20 = Messages._data.slice(0, 20);
       top20.forEach((message) => {
-        var $currentMessage = MessagesView.renderMessage(message);
-        // console.log('CurrentMessage', message);
-        $('#chats').prepend($currentMessage);
+        MessagesView.renderMessage(message);
       });
     }
   },
 
   renderMessage: function(message) {
-    // TODO: Render a single message.
-    // .html and .prepend
-    // turn message into a dom node
-    var username = message.username;
-    var text = message.text;
-    var roomname = message.roomname;
-    // console.log(username);
-    return MessageView.render({username: username, text: text, roomname: roomname});
 
+    var $currentMessage = MessageView.render(message);
+    $('#chats').prepend($currentMessage);
+    return;
   },
 
   handleClick: function(event) {
-    // TODO: handle a user clicking on a message
-    // (this should add the sender to the user's friend list).
+    // var username = $(event.target).data('username');
+    $('#chats').on('click', '.username', (event) => {
+      var username = $(event.target).data('username');
+      if (username === undefined) { return; }
+      Friends.toggleStatus(username, MessagesView.render);
+    });
   },
 
   handleRefresh: function() {
     var $refreshButton = $('.refreshButton');
     $refreshButton.on('click', function(event) {
+      $('#chat').empty();
       MessagesView.render();
     });
   },

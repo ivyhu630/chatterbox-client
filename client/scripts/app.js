@@ -12,22 +12,23 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
-    RoomsView.initialize();
-    MessagesView.initialize();
+    // RoomsView.initialize();
+    // MessagesView.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
     App.fetch(RoomsView.initialize);
+    App.fetch(MessagesView.initialize);
 
 
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
 
-    // setInterval(function() {
-    //   App.fetch(App.stopSpinner);
-    // }, 10000);
+    setInterval(function() {
+      App.fetch(App.stopSpinner);
+    }, 5000);
     // setTimeout(function() {
     //   RoomsView.initialize();
     //   MessagesView.initialize();

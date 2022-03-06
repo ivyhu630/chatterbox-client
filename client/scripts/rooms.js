@@ -16,12 +16,7 @@ var Rooms = {
       uniqueRoomnames.add(currentRoom);
     });
     Rooms._data = uniqueRoomnames;
-    // console.log(Rooms._data);
   },
-
-  // addRoom: function(newRoom) {
-  //   Rooms._data.add(newRoom);
-  // }
 
 
 };

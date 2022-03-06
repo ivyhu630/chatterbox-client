@@ -14,12 +14,9 @@ var Messages = {
   // add another message to our list
   pullData: function(data) {
     Messages._data = data;
-    // console.log('This is pullData', Messages._data);
   },
 
   pullRoomSpecificData: function (roomname) {
-
-
     var updatedData = [];
     for (const message of Messages._data) {
       if (message.roomname === roomname) {

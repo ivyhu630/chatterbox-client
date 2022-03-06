@@ -17,10 +17,11 @@ var FormView = {
 
     // TODO: Currently, this is all handleSubmit does.
     // Make this function actually send a message to the Parse API.
+    var roomname = $( '#myRooms option:selected' ).text();
     var message = {
       username: App.username,
       text: $('#message').val(),
-      roomname: undefined,
+      roomname: roomname,
     };
     Parse.create(message);
     // console.log(document.getElementById('message').value);
